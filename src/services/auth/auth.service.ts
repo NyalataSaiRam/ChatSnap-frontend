@@ -15,12 +15,12 @@ export class AuthService {
   serverUrl: string = environment.url
 
   signUp(singupFormData: any): Observable<any> {
-    return this.httpClient.post(`${this.serverUrl}signup`, singupFormData).pipe(catchError((err) => err
+    return this.httpClient.post(`${this.serverUrl}/signup`, singupFormData).pipe(catchError((err) => err
     ));
   }
 
   login(loginFormData: any): Observable<any> {
-    return this.httpClient.post(`${this.serverUrl}login`, loginFormData).pipe(catchError((err) => err
+    return this.httpClient.post(`${this.serverUrl}/login`, loginFormData).pipe(catchError((err) => err
     ));
   }
 
@@ -28,7 +28,7 @@ export class AuthService {
     const headers = new HttpHeaders({
       'authorization': `Bearer ${sessionStorage.getItem('token')}`
     })
-    return this.httpClient.get(`${this.serverUrl}user`, { headers })
+    return this.httpClient.get(`${this.serverUrl}/user`, { headers })
   }
 
   addToUsersConnection(email: string): Observable<any> {
@@ -36,21 +36,21 @@ export class AuthService {
       'authorization': `Bearer ${sessionStorage.getItem('token')}`
     })
 
-    return this.httpClient.patch(`${this.serverUrl}user/addToConnection`, { email: email }, { headers })
+    return this.httpClient.patch(`${this.serverUrl}/user/addToConnection`, { email: email }, { headers })
   }
 
   UpdateUserDetails(formData: any): Observable<any> {
     const headers = new HttpHeaders({
       'authorization': `Bearer ${sessionStorage.getItem('token')}`
     })
-    return this.httpClient.post(`${this.serverUrl}user/updateProfile`, formData, { headers })
+    return this.httpClient.post(`${this.serverUrl}/user/updateProfile`, formData, { headers })
   }
 
   getSelectedUser(id: string): Observable<any> {
     const headers = new HttpHeaders({
       'authorization': `Bearer ${sessionStorage.getItem('token')}`
     })
-    return this.httpClient.get(`${this.serverUrl}user/${id}`, { headers })
+    return this.httpClient.get(`${this.serverUrl}/user/${id}`, { headers })
   }
 
 
