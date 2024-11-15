@@ -1,0 +1,129 @@
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+small {
+    font-size: 12px;
+    margin-top: 5px;
+    color: red;
+}
+
+.login_container {
+    border-radius: 10px;
+    /* width: 30%; */
+    width: 500px;
+    padding: 1rem;
+    background: rgb(0, 212, 255);
+    background: linear-gradient(90deg, rgba(0, 212, 255, 1) 0%, rgba(9, 9, 121, 1) 100%);
+    box-shadow: 5px 5px 5px black;
+}
+
+.login_container h2 {
+    color: white;
+    text-align: center;
+    letter-spacing: .2rem;
+    margin-bottom: 1rem;
+}
+
+form .input_container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: .5rem 2rem;
+    position: relative;
+}
+
+.input_container label {
+    color: #fff;
+    font-size: 1.1rem;
+}
+
+.input_container i {
+    position: absolute;
+    top: 55%;
+    left: 85%;
+
+
+}
+
+.input_container i:hover {
+    cursor: pointer;
+    color: blue;
+
+
+}
+
+input[type='submit']:not(:disabled):hover {
+    background-color: rgba(0, 212, 255, 1);
+    color: black;
+    cursor: pointer;
+    outline: none;
+}
+
+input[type='submit']:disabled {
+
+    cursor: not-allowed;
+
+}
+
+.input_container input {
+    padding: 1rem;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    margin-top: 2px;
+    font-family: inherit;
+    transition: all .3s ease-out;
+
+}
+
+.input_container input:hover,
+.input_container input:focus {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+
+
+
+
+
+
+
+
+/* Style for invalid input fields */
+input.ng-invalid.ng-touched {
+    outline: 2px solid red;
+    outline-offset: 3px;
+    /* Red border for invalid inputs */
+    background-color: #ffe6e6;
+    /* Light red background */
+}
+
+input.ng-valid.ng-touched {
+    outline: 3px solid rgb(89, 244, 89);
+    outline-offset: 3px;
+    /* Green border for valid inputs */
+}
+
+input:focus.ng-invalid {
+    outline-color: red;
+    outline-offset: 3px;
+    /* Red border on focus for invalid input */
+}
+
+input:focus.ng-valid {
+    outline-color: green;
+    outline-offset: 3px;
+    /* Green border on focus for valid input */
+}
+
+/* Error message styling */
+/* small {
+    color: red;
+    font-size: 0.9em;
+    display: block;
+} */

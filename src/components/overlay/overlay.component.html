@@ -1,0 +1,13 @@
+<div class="overlay">
+    <div class="messageContainer">
+        <p id="closeBtn"><i (click)="closeOverlay()" class="fa-solid fa-xmark"></i></p>
+        @if(type === 'success'){
+
+        <i class="fa-regular fa-circle-check" style="color: rgb(91, 247, 12);"></i>
+        <p>{{message}}</p>
+        }@else {
+        <i class="fa-solid fa-circle-exclamation" style="color: red;"></i>
+        <p>{{message}}</p>
+        }
+    </div>
+</div>

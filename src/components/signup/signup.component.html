@@ -1,0 +1,69 @@
+<div class="container">
+    <div class="login_container">
+        <h2>Sign up</h2>
+        <form [formGroup]="signupForm" (ngSubmit)="signUp()">
+            <div class="input_container">
+                <label for="fullname">Full Name</label>
+                <input formControlName="fullname" type="text" id="fullname">
+                @if (signupForm.controls['fullname'].touched && signupForm.controls['fullname'].errors?.['required']) {
+                <small>Please fill out this field</small>
+                }
+                @if (signupForm.controls['fullname'].touched && signupForm.controls['fullname'].errors?.['minlength'] &&
+                !signupForm.controls['fullname'].errors?.['required']) {
+                <small>Full Name must be atleast 3 characters long</small>
+                }
+            </div>
+            <div class="input_container">
+                <label for="email">Email</label>
+                <input formControlName="email" type="text" id="email">
+                @if (signupForm.controls['email'].touched && signupForm.controls['email'].errors?.['required']) {
+                <small>Please fill out this field</small>
+                }
+                @if (signupForm.controls['email'].touched && signupForm.controls['email'].errors?.['email'] &&
+                !signupForm.controls['email'].errors?.['required']) {
+                <small>Invalid email</small>
+                }
+            </div>
+            <div class="input_container">
+                <label for="password">Password</label>
+                <input formControlName="password" #passwordInput type="password" id="password">
+                <i #eyeicon for="password" (click)="toggleEye()" class="fa-regular fa-eye-slash"></i>
+                @if (signupForm.controls['password'].touched && signupForm.controls['password'].errors?.['required']) {
+                <small>Please fill out this field</small>
+                }
+                @if (signupForm.controls['password'].touched && signupForm.controls['password'].errors?.['minlength'] &&
+                !signupForm.controls['password'].errors?.['required']) {
+                <small>Password must be atleast 3 characters long</small>
+                }
+            </div>
+            <div class="input_container">
+                <label for="cpassword">Confirm Password</label>
+                <input formControlName="confirmPassword" #passwordInput2 type="password" id="cpassword">
+                <i #eyeicon2 for="cpassword" (click)="toggleEye2()" class="fa-regular fa-eye-slash"></i>
+                @if (signupForm.controls['confirmPassword'].touched &&
+                signupForm.controls['confirmPassword'].errors?.['required']) {
+                <small>Please fill out this field</small>
+                }
+                @if (signupForm.controls['confirmPassword'].touched &&
+                signupForm.controls['confirmPassword'].errors?.['minlength'] &&
+                !signupForm.controls['confirmPassword'].errors?.['required']) {
+                <small>Password must be atleast 3 characters long</small>
+                }
+            </div>
+            <div class="input_container">
+                @if (signupForm.hasError('invalidPasswords') && signupForm.get('confirmPassword')?.touched) {
+                <small>Passwords do not match</small>
+                }
+
+                <input [disabled]="signupForm.invalid" type="submit">
+            </div>
+        </form>
+        <p>Already have an account ? <a [routerLink]="['/login']">login</a></p>
+    </div>
+
+</div>
+
+@if(showOverlay){
+
+<app-overlay (closeBtn)="showOverlay = false" [message]="successMsg" type="success"></app-overlay>
+}

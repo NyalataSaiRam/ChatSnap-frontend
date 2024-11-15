@@ -1,0 +1,60 @@
+<div class="container">
+    <h2>Settings</h2>
+
+    <div class="profile">
+        <div class="profile_img">
+            <img #image (click)="fileInput.click()" [src]="serverUrl+userDetails?.profilePic" alt="">
+            <input #fileInput (change)="onFileChange($event)" type="file">
+        </div>
+        <div class="profile_details">
+            <form [formGroup]="profileForm">
+                <div class="input_box">
+                    <label for="username">username</label>
+                    <input formControlName="fullname" type="text" id="name">
+                </div>
+                <div class="input_box">
+                    <label for="email">Email</label>
+                    <input [disabled]="true" formControlName="email" type="text" id="email">
+                </div>
+                <div class="input_group">
+                    <div class="input_box">
+                        <label for="radiobtn">Gender</label>
+                        <label for="male">
+                            <input formControlName="gender" id="male" name="gender" value="male" type="radio" id="name">
+                            <span>Male</span>
+                        </label>
+                        <label for="female">
+                            <input formControlName="gender" id="female" name="gender" value="female" type="radio"
+                                id="name">
+                            <span>Female</span>
+
+                        </label>
+                    </div>
+                    <div class="input_box">
+                        <label for="age">Age</label>
+                        <input formControlName="age" type="number" id="age">
+                    </div>
+
+                </div>
+                <div class="input_box">
+                    <label for="profession">Profession</label>
+                    <input formControlName="profession" type="text" id="profession">
+                </div>
+                <div class="input_box">
+                    <label for="description">Description</label>
+                    <textarea formControlName="description" [rows]="5" id="description"></textarea>
+                </div>
+            </form>
+            <div class="btn_group">
+                <button (click)="closeSettings()">close</button>
+                <button (click)="submitForm()">submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if(fileError.length){
+<div style="background-color: red; color: white; padding: .5rem; position: absolute; top: 0; width: 100%;">
+    <p style="text-align: center;">{{fileError}}</p>
+</div>
+}

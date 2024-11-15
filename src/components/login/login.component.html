@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="login_container">
+        <h2>Login</h2>
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+
+            <div class="input_container">
+                <label for="email">Email</label>
+                <input formControlName="email" type="text" id="email">
+                @if (loginForm.controls['email'].touched && loginForm.controls['email'].errors?.['required']) {
+                <small>Please fill out this field</small>
+                }
+                @if (loginForm.controls['email'].touched && loginForm.controls['email'].errors?.['email'] &&
+                !loginForm.controls['email'].errors?.['required']) {
+                <small>Invalid email</small>
+                }
+            </div>
+            <div class="input_container">
+                <label for="password">Password</label>
+                <input formControlName="password" #passwordInput type="password" id="password">
+                <i #eyeicon for="password" (click)="toggleEye()" class="fa-regular fa-eye-slash"></i>
+                @if (loginForm.controls['password'].touched && loginForm.controls['password'].errors?.['required']) {
+                <small>Please fill out this field</small>
+                }
+                @if (loginForm.controls['password'].touched && loginForm.controls['password'].errors?.['minlength'] &&
+                !loginForm.controls['password'].errors?.['required']) {
+                <small>Password must be atleast 3 characters long</small>
+                }
+            </div>
+
+            <div class="input_container">
+                @if (loginForm.hasError('invalidPasswords') && loginForm.get('confirmPassword')?.touched) {
+                <small>Passwords do not match</small>
+                }
+
+                <input [disabled]="loginForm.invalid" type="submit">
+            </div>
+        </form>
+        <p>Don't have an account? <a [routerLink]="['/signup']">sign up</a></p>
+    </div>
+
+</div>
+
+@if(showOverlay){
+
+<app-overlay (closeBtn)="showOverlay = false" [message]="errorMsg" type="error"></app-overlay>
+}

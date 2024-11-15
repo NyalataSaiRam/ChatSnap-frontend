@@ -1,0 +1,61 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(128, 128, 128, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.messageContainer {
+    width: 500px;
+    height: 400px;
+    background-color: #fff;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    flex-direction: column;
+    gap: 2rem;
+    animation: animate_div 1s ease-in;
+
+
+}
+
+@keyframes animate_div {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.messageContainer i {
+    font-size: 5rem;
+
+}
+
+.messageContainer p {
+    font-size: 2rem;
+    text-transform: capitalize;
+    text-align: center;
+
+}
+
+.messageContainer #closeBtn i {
+    font-size: 2rem;
+    text-transform: capitalize;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+
+
+}

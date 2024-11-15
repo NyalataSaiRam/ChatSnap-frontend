@@ -1,0 +1,194 @@
+@if(showVideo){
+<app-video-call (hangCall)="hangupCall()" [streams]="[localVideoStream, remoteVideoStream]"></app-video-call>
+
+}@else if (showAudio) {
+@if(recv){
+
+
+<app-audio-call [user]="callerUser" (hangCall)="hangupCall()" [audiostream]="remoteAudio"></app-audio-call>
+
+}@else {
+
+<app-audio-call [user]="selectedUser" (hangCall)="hangupCall()" [audiostream]="remoteAudio"></app-audio-call>
+}
+}@else{
+
+<div class="container">
+    <div class="side_bar">
+        <div class="searchBar">
+            <input [(ngModel)]="searchString" (ngModelChange)="search($event)" type="text" placeholder="Search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <div class="chatsList">
+
+            @if(user?.connections?.length !== 0 && showChatList){
+            @for (chat of user?.connections; track $index) {
+
+            <div (click)="selectChat(chat._id)" class="pallet">
+                <img [src]="imageUrl+chat.profilePic" alt="">
+                <div class="details">
+                    <span style="text-transform: capitalize;">{{chat.fullname}}</span>
+
+                </div>
+            </div>
+            }
+            }@else if (!showChatList) {
+            @if(searchResult.length){
+            @for (chat of searchResult; track $index) {
+            <div (click)="selectChat(chat._id)" class="pallet">
+                <img [src]="imageUrl+chat.profilePic" alt="">
+                <div class="details">
+                    <span style="text-transform: capitalize;">{{chat.fullname}}</span>
+                    <span title="online" class="status"></span>
+                </div>
+            </div>
+            }
+            }@else {
+            <p>No chats found</p>
+            }
+
+            }@else {
+            <div style="background-color: #C0FFEE; padding: 1rem; border-radius:10px ; text-align: center;">
+                <p style="color: black; ">Add users to get started</p>
+            </div>
+            }
+
+
+        </div>
+    </div>
+    @if(showChatWindow){
+
+    <div class="chat_window">
+
+        <div class="details">
+            <img (click)="showProfile = true" [src]="imageUrl+selectedUser?.profilePic" alt="">
+            <div class="details_section">
+                <div>
+                    <span style="text-transform: capitalize;" class="username">{{selectedUser?.fullname}}</span>
+                    @if(activeUsers.includes(selectedUser?._id)){
+
+                    <span class="info">online</span>
+                    }@else {
+                    <span class="info" style="color: grey;">offline</span>
+
+                    }
+                </div>
+                <ul>
+                    <li (click)="handleAudioCallClick()" title="Audio call"><i class="fa-solid fa-phone"></i>
+                    </li>
+                    <li (click)="handleVideoCallClick()" title="Video call"><i class="fa-solid fa-video"></i>
+                    </li>
+                    <!-- <li [routerLink]="['/video']" title="Video call"><i class="fa-solid fa-video"></i>
+                        </li> -->
+                </ul>
+            </div>
+        </div>
+        <div class="chats">
+            <div #messageContainer class="conversations">
+
+                @if(conversation.length){
+
+                @for (conv of conversation; track $index) {
+                @if(conv.sender === user._id){
+
+                <span class="message">
+                    {{conv.message}}
+                    <sub>{{conv.createdAt |date:'dd/MM/yy-hh:mm'}}</sub>
+                </span>
+                }
+
+                @if(conv.receiver === user?._id){
+
+                <span class="reply">
+                    {{conv.message}}
+                    <sub>{{conv.createdAt |date:'dd/MM/yy-hh:mm'}}</sub>
+                </span>
+                }
+
+
+
+
+                }
+                }@else {
+                <div
+                    style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; color:#444646">
+                    <p>Start chatting</p>
+                </div>
+                }
+
+            </div>
+            <div class="input_box">
+                <input type="text" [(ngModel)]="message" placeholder="Type your message here...">
+                <div class="icons">
+                    <i (click)="sendMessage()" class="fa-solid fa-paper-plane"></i>
+                    <!-- <i class="fa-solid fa-face-smile"></i> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    }@else {
+    <div class="chat_window_other">
+
+        <p>Select a chat to start conversation</p>
+    </div>
+    }
+</div>
+<div class="user">
+    <div class="profile">
+        <img [src]="imageUrl+user?.profilePic" alt="">
+        <p style="text-transform: capitalize;">{{user?.fullname}}</p>
+    </div>
+    <div class="profileSettings">
+        <i title="add user" (click)="showAddUserDialogBox = !showAddUserDialogBox" class="fa-solid fa-circle-plus"></i>
+        <i title="settings" (click)="showSettings = !showSettings" class="fa-solid fa-gear"></i>
+        <i title="logout" (click)=" logout() " class="fa-solid fa-right-from-bracket"></i>
+    </div>
+</div>
+@if (showAddUserDialogBox) {
+<app-add-user (newUserAdded)="getUser()" (closeAddUserDialog)="showAddUserDialogBox = false"
+    class="adduser"></app-add-user>
+}
+@if (showSettings) {
+<app-settings [userDetails]="user" (settingsUpdated)="getUser()"
+    (closeSettingsDialog)="showSettings = false"></app-settings>
+}
+@if (showProfile) {
+<app-user-profile [userDetails]="selectedUser" (closeProfile)="showProfile = false"></app-user-profile>
+}
+
+@if(showVideoCallDialogBox){
+
+<div class="videoCallAlert">
+    <h1>{{callerUser.fullname}}</h1>
+    <h4>video Call</h4>
+    <div class="btngrp">
+        <button (click)="handleAnswer()">answer</button>
+        <button (click)="handlereject()">reject</button>
+    </div>
+</div>
+
+}
+@if(showAudioCallDialogBox){
+
+<div class="videoCallAlert">
+    <h1>{{callerUser.fullname}}</h1>
+    <h4>Audio Call</h4>
+    <div class="btngrp">
+        <button (click)="handleaudioAnswer()">answer</button>
+        <button (click)="handlereject()">reject</button>
+    </div>
+</div>
+
+}
+
+@if(callRejected){
+<div class="videoCallAlert">
+    <h1>{{calleeUser.fullname}}</h1>
+    <h4>Rejected your Call</h4>
+
+</div>
+
+}
+
+
+}

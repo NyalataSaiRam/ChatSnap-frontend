@@ -1,0 +1,179 @@
+.container {
+    background-color: rgba(0, 0, 0, 0.826);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+h2 {
+    letter-spacing: 1px;
+    text-align: center;
+    padding: 1rem;
+    color: rgb(60, 172, 136);
+}
+
+.container .profile {
+    background-color: rgb(225, 249, 242);
+    width: 50%;
+    padding: 1rem;
+    display: flex;
+    border-radius: 1rem;
+    box-shadow: 2px 2px 10px rgb(60, 172, 136);
+    animation: animateContainers 1s ease-out;
+
+}
+
+.container .profile .profile_img {
+    width: 50%;
+    /* background-color: rgb(18, 128, 224); */
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .profile .profile_img input[type="file"] {
+    display: none;
+}
+
+.container .profile .profile_img img {
+    width: 60%;
+    border-radius: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+}
+
+.container .profile .profile_img img:hover {
+    opacity: .5;
+    cursor: pointer;
+}
+
+.container .profile .profile_details {
+    width: 50%;
+    /* background-color: rgb(154, 169, 182); */
+    padding: 1rem;
+    /* border-left: 1px solid rgba(0, 128, 0, 0.493); */
+}
+
+.profile_details .input_box {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.profile_details .input_box label {
+    font-size: large;
+    text-transform: capitalize;
+}
+
+
+.profile_details .input_box input {
+    padding: 1em;
+    font-family: inherit;
+    border-radius: 5px;
+    border: none;
+    border-bottom: 3.5px solid rgb(255, 255, 255);
+}
+
+.profile_details .input_box input:focus {
+    border: none;
+    outline: none;
+    border-bottom: 3.5px solid rgb(60, 172, 136);
+    background-color: rgb(195, 234, 221);
+}
+
+.profile_details .input_box textarea {
+    padding: 1em;
+    font-family: inherit;
+    border-radius: 5px;
+    border: none;
+    border-bottom: 3.5px solid rgb(255, 255, 255);
+}
+
+.profile_details .input_box textarea:focus {
+    border: none;
+    outline: none;
+    border-bottom: 3.5px solid rgb(60, 172, 136);
+    background-color: rgb(195, 234, 221);
+}
+
+.profile_details .input_box label>span {
+    color: gray;
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+input[type='radio'] {
+    accent-color: green;
+
+}
+
+.input_group {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.input_group .input_box {
+    width: 50%;
+
+}
+
+.btn_group {
+    display: flex;
+
+    justify-content: space-between;
+
+}
+
+.btn_group button {
+    padding: .5rem;
+    width: 150px;
+    font-size: 16px;
+    border-radius: 20px;
+
+}
+
+.btn_group button:hover {
+
+    box-shadow: 2px 2px 5px grey;
+
+}
+
+.btn_group button:nth-child(1) {
+    border: none;
+    outline: none;
+    color: rgb(60, 172, 136);
+    background-color: #fff;
+    transition: all .3s ease-out;
+
+}
+
+.btn_group button:nth-child(1):hover {
+
+    color: rgb(255, 255, 255);
+    background-color: rgb(60, 172, 136);
+    cursor: pointer;
+
+}
+
+.btn_group button:nth-child(2) {
+    border: none;
+    outline: none;
+    color: #fff;
+    background-color: rgb(60, 172, 136);
+    transition: all .3s ease-out;
+}
+
+.btn_group button:nth-child(2):hover {
+    color: #fff;
+    background-color: rgba(60, 172, 137, 0.584);
+    cursor: pointer;
+}

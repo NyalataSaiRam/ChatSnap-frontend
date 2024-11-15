@@ -1,0 +1,13 @@
+<div class="dialog_box">
+    <form>
+        <div class="input_box">
+            <label for="email">user email</label>
+            <input placeholder="Type your friend&#39;s email address" id="email" name="email" type="email"
+                [(ngModel)]="email">
+        </div>
+        <div class="btn_group">
+            <button (click)="closeAddUser()">close</button>
+            <button (click)="addUser()">submit</button>
+        </div>
+    </form>
+</div>

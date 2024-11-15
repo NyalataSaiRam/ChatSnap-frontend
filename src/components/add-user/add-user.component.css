@@ -1,0 +1,98 @@
+.dialog_box {
+    width: 400px;
+    padding: 1rem;
+    background-color: #C0FFEE;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgb(62, 62, 62);
+}
+
+form {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.dialog_box input {
+    width: 100%;
+    padding: 1rem;
+    font-family: inherit;
+    font-size: 14px;
+    border: none;
+    outline: none;
+    border-bottom: 3px solid #fff;
+    border-radius: 10px;
+}
+
+.dialog_box label {
+    text-transform: capitalize;
+    margin: 1px;
+}
+
+button {
+    background-color: #C0FFEE;
+    padding: .5rem;
+    width: 40%;
+    border-radius: 5px;
+
+}
+
+button:hover {
+    background-color: #62dcbb;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px grey;
+}
+
+.dialog_box input:focus {
+    border-bottom: 3px solid #00ff91;
+    border-radius: 10px 10px 0 0;
+
+}
+
+.btn_group {
+    display: flex;
+
+    justify-content: space-between;
+
+}
+
+.btn_group button {
+    padding: .5rem;
+    width: 100px;
+    font-size: 16px;
+    border-radius: 20px;
+
+}
+
+
+
+.btn_group button:nth-child(1) {
+    border: none;
+    outline: none;
+    color: rgb(60, 172, 136);
+    background-color: #fff;
+    transition: all .3s ease-out;
+
+}
+
+.btn_group button:nth-child(1):hover {
+
+    color: rgb(255, 255, 255);
+    background-color: rgb(60, 172, 136);
+    cursor: pointer;
+
+}
+
+.btn_group button:nth-child(2) {
+    border: none;
+    outline: none;
+    color: #fff;
+    background-color: rgb(60, 172, 136);
+    transition: all .3s ease-out;
+}
+
+.btn_group button:nth-child(2):hover {
+    color: #fff;
+    background-color: rgba(60, 172, 137, 0.584);
+    cursor: pointer;
+}
