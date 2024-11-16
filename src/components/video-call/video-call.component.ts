@@ -21,8 +21,8 @@ export class VideoCallComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.localVideo.nativeElement.srcObject = this.streams[ 0 ]
-    this.remoteVideo.nativeElement.srcObject = this.streams[ 1 ]
+    // this.localVideo.nativeElement.srcObject = this.streams[ 0 ]
+    // this.remoteVideo.nativeElement.srcObject = this.streams[ 1 ]
   }
 
 }
