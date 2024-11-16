@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth/auth.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-settings',
@@ -14,7 +15,7 @@ export class SettingsComponent implements OnInit {
 
   profileForm!: FormGroup;
   fileError!: String;
-  serverUrl = 'http://localhost:8000/Images/'
+  serverUrl = environment.url + "/images/"
   formData: FormData = new FormData();
 
   @ViewChild('image') fI!: ElementRef;

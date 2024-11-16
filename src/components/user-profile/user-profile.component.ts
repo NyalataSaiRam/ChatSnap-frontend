@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-user-profile',
@@ -10,7 +11,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class UserProfileComponent {
 
   @Input() userDetails: any;
-  imageUrl: string = "http://localhost:8000/images/";
+  // imageUrl: string = "http://localhost:8000/images/";
+  imageUrl = environment.url + "/images/"
 
   @Output() closeProfile = new EventEmitter()
   closeProfileDialog() {

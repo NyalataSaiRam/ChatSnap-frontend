@@ -1,6 +1,6 @@
 import { AfterViewChecked, Component, ElementRef, OnDestroy, OnInit, ViewChild, viewChild } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { environment } from '../../environments/environment.development';
+// import { environment } from '../../environments/environment.development';
 import { AuthService } from '../../services/auth/auth.service';
 import { AddUserComponent } from '../add-user/add-user.component';
 import { SettingsComponent } from '../settings/settings.component';
@@ -13,6 +13,7 @@ import { Subscription } from 'rxjs';
 import Peer from 'peerjs';
 import { VideoCallComponent } from '../video-call/video-call.component';
 import { AudioCallComponent } from '../audio-call/audio-call.component';
+import { environment } from '../../environments/environment';
 
 
 @Component({

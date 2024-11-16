@@ -1,7 +1,8 @@
 import { AsyncPipe, DatePipe } from '@angular/common';
 import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { interval, map, Observable, of } from 'rxjs';
-import { environment } from '../../environments/environment.development';
+import { environment } from '../../environments/environment';
+// import { environment } from '../../environments/environment.development';
 
 @Component({
   selector: 'app-audio-call',
