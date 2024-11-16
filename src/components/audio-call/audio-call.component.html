@@ -4,6 +4,6 @@
         <h3>{{user.fullname}}</h3>
         <small>{{ (timer$ | async)?.minutes }}:{{ (timer$ | async)?.seconds }}</small>
         <span (click)="hangup()"><i class="fa-solid fa-phone"></i></span>
-        <audio [srcObject]="audiostream" autoplay></audio>
+        <audio autoplay></audio>
     </div>
 </div>

@@ -1,5 +1,5 @@
 import { AsyncPipe, DatePipe } from '@angular/common';
-import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { interval, map, Observable, of } from 'rxjs';
 import { environment } from '../../environments/environment';
 // import { environment } from '../../environments/environment.development';
@@ -11,11 +11,11 @@ import { environment } from '../../environments/environment';
   templateUrl: './audio-call.component.html',
   styleUrl: './audio-call.component.css'
 })
-export class AudioCallComponent {
+export class AudioCallComponent implements AfterViewInit {
   @Input() audiostream!: any;
   @Input() user!: any;
   imageurl = environment.url + '/images/'
-  // @ViewChild('remoteAudio') audioElement!: ElementRef;
+  @ViewChild('remoteAudio') audioElement!: ElementRef;
 
   @Output() hangCall = new EventEmitter()
 
@@ -26,7 +26,8 @@ export class AudioCallComponent {
   minutes: string = '00';
   timer$!: Observable<{ minutes: string, seconds: string }>;
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
+    this.audioElement.nativeElement.srcObject = this.audiostream;
     this.timer$ = interval(1000).pipe(
       map(seconds => {
         const minutes = String(Math.floor(seconds / 60)).padStart(2, '0');
