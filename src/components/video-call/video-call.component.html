@@ -1,8 +1,8 @@
 <div class="container">
     <div class="video_container">
-        <video [srcObject]="streams[0]" #remoteVideo autoplay [playsInline]="true"></video>
+        <video #localVideo autoplay [playsInline]="true"></video>
         <div class="small_video_container">
-            <video [srcObject]="streams[1]" #localVideo autoplay [playsInline]="true"></video>
+            <video #remoteVideo autoplay [playsInline]="true"></video>
         </div>
     </div>
     <div class="icons">
