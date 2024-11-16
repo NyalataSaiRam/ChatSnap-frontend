@@ -27,7 +27,7 @@ export class AudioCallComponent implements AfterViewInit {
   timer$!: Observable<{ minutes: string, seconds: string }>;
 
   ngAfterViewInit(): void {
-    this.audioElement.nativeElement.srcObject = this.audiostream;
+    // this.audioElement.nativeElement.srcObject = this.audiostream;
     this.timer$ = interval(1000).pipe(
       map(seconds => {
         const minutes = String(Math.floor(seconds / 60)).padStart(2, '0');
