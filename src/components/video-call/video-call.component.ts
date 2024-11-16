@@ -1,4 +1,4 @@
-import { AfterContentInit, AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { from, Observable } from 'rxjs';
 
 @Component({
@@ -8,7 +8,7 @@ import { from, Observable } from 'rxjs';
   templateUrl: './video-call.component.html',
   styleUrl: './video-call.component.css'
 })
-export class VideoCallComponent implements AfterViewInit {
+export class VideoCallComponent {
   // @ViewChild('remoteVideo') remoteVideo!: ElementRef;
   // @ViewChild('localVideo') localVideo!: ElementRef;
 
