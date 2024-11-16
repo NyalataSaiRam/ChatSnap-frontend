@@ -9,8 +9,8 @@ import { from, Observable } from 'rxjs';
   styleUrl: './video-call.component.css'
 })
 export class VideoCallComponent implements AfterViewInit {
-  @ViewChild('remoteVideo') remoteVideo!: ElementRef;
-  @ViewChild('localVideo') localVideo!: ElementRef;
+  // @ViewChild('remoteVideo') remoteVideo!: ElementRef;
+  // @ViewChild('localVideo') localVideo!: ElementRef;
 
   @Input() streams!: any[]
 
@@ -20,10 +20,7 @@ export class VideoCallComponent implements AfterViewInit {
     this.hangCall.emit()
   }
 
-  ngAfterViewInit(): void {
-    this.localVideo.nativeElement.srcObject = this.streams[ 0 ]
-    this.remoteVideo.nativeElement.srcObject = this.streams[ 1 ]
-  }
+
 
 
 }
